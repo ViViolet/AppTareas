@@ -1,0 +1,130 @@
+body{
+    background-color: peachpuff;
+    font-family: monospace;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+header{
+    padding-top: 33px;
+}
+#botonpeticion{
+    position: absolute;
+    top: 33px;
+    right: 40px;
+}
+
+#datos{
+    position: absolute;
+    top: 10px;
+    right: 80px;
+}
+#contenedor{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+form label{
+    padding-top: 10px;
+}
+
+#cerrarsesion{
+    float: right;
+}
+h3{
+    text-align: center;
+    font-size: 20px;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+}
+
+#listartareas td, th{
+   border-bottom: 1px solid black;
+   padding: 15px;
+   text-align: left;
+}
+#listartareas td{
+    background-color: bisque;
+    font-weight:bold;
+    font-size: 15px;
+    text-align: center
+}
+
+
+.ocultar{
+    display: none;
+}
+.mostrar{
+    display: block;
+}
+
+.dropdown{
+    list-style: none;
+    display: none;
+}
+.dropdownver{
+    list-style: none;
+    display: block;
+}
+
+button{
+    cursor: pointer;
+}
+
+.loader {
+    
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+    border-left: 16px solid pink;
+    width: 75px;
+    height: 75px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+#addtarea{
+    background: palevioletred;
+    color: white;
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    border: 2px solid brown;
+    display: flex;
+    justify-content: space-around;
+    font-size: 40px;
+    position: fixed;
+    bottom: 33px;
+    right: 40px;
+    cursor: pointer;
+    font-weight:bold;
+}
+#añadirtarea{
+    position: fixed;
+    bottom: 33px;
+    left: 40px;
+}
+

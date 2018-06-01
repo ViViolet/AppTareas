@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AppTareas</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./JS/registro.js"></script>
+</head>
+<body>
+    <h1>Resgistro de usuario</h1>
+    <form action="" method="post" id="registro">
+        <label for="nombre">Tu nombre:</label>
+        <input type="text" required name="nombre" id="nombre" placeholder="Nombre">
+        <label for="nickname">Tu nombre de usuario:</label>
+        <input type="text" required name="nickname" id="nickname" placeholder="Nickname">
+        <label for="contraseña","contraseña2">Tu contraseña:</label>
+        <input type="password" required name="contraseña" id="contraseña" placeholder="Contraseña">
+        <input type="password" required name= "confirmacion contraseña" id="contraseña2" placeholder="Confirma la contraseña :)">
+        <label for="email">Tu correo electrónico:</label>
+        <input type="email" required name= "email" id="email" placeholder="Email">
+        <button type="submit" id="enviar" disabled> Enviar </button>
+    </form>
+    <div id="mensajes" style="display: none"></div>
+</body>
+</html>
