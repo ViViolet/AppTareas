@@ -105,6 +105,7 @@ window.onload = function () {
             usuario: document.getElementById("nickname").value,
             contraseña: document.getElementById("contraseña").value,
             email: document.getElementById("email").value,
+            avatar: document.getElementById("foto1").src
         }
         req.send(JSON.stringify(datos));
     }
@@ -135,7 +136,8 @@ window.onload = function () {
             titulo: document.getElementById("titulo").value,
             descripcion: document.getElementById("descripcion").value,
             ejecutor: document.getElementById("ejecutor").value,
-            fecha: document.getElementById("fecha").value
+            fecha: document.getElementById("fecha").value,
+
         }
         req.send(JSON.stringify(datos));
     }
@@ -146,11 +148,20 @@ window.onload = function () {
         if (document.getElementById("creartarea").getAttribute("class") == "ocultar") {
             document.getElementById("creartarea").setAttribute("class", "mostrar");
             document.getElementById("datosuser").setAttribute("class", "ocultar");
+            document.getElementById("actualizartarea").setAttribute("class", "ocultar");
         } else {
             document.getElementById("creartarea").setAttribute("class", "ocultar");
         }
-    
     }
+
+    // EDITAR: MOSTRAR/OCULTAR EN FUNCIÓN DE EL ICONO DE ACTUALIZAR TAREA
+    
+    // this.document.getElementById("").onclick = function () {
+    //     if (document.getElementById("actualizartarea").getAttribute("class") == "mostrar") {
+    //         document.getElementById("creartarea").setAttribute("class", "ocultar");
+    //         document.getElementById("datosuser").setAttribute("class", "ocultar");
+    //     }
+    // }
 
     this.document.getElementById("actualizacionbotontarea").onclick = function (ev) {
         ev.preventDefault();
@@ -184,10 +195,7 @@ window.onload = function () {
 
     }
 
-    document.getElementById('foto').addEventListener('change', handleFileSelect, false);
-
-
-
+    document.getElementById('foto').addEventListener('change', archivo, false);
 }
 
 
@@ -217,15 +225,14 @@ function llenartablatareas(listatareas) {
          <th>${tarea.autor}</th>
          <th>${tarea.ejecutor}</th>
          <th>${tarea.fecha}</th>
-         <th align="center">${tarea.estado}</th>
-
-         <th>${thOptions}</th>
+         <th style="text-align:center">${tarea.estado}</th>
+         <th style="text-align:center">${thOptions}</th>
     </tr>`;
         contenidotabla += fila;
     }
     document.getElementById("tablatareas").innerHTML = contenidotabla;
 
-    
+
 }
 
 function peticioneditar(id) {
@@ -290,16 +297,15 @@ function cambioestado(id) {
     req.send(null)
 }
 
-function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-
-    // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, last modified: ',
-                  f.lastModifiedDate.toLocaleDateString(), '</li>');
+function archivo(evt) {
+    var file = evt.target.files[0];
+    console.log(file);
+    var reader = new FileReader();
+    reader.onload = function (f) {
+        console.log(f.target.result);
+        document.getElementById("foto1").src = f.target.result;
     }
-    console.log (output);
-  }
+    reader.readAsDataURL(file);
+
+}
 

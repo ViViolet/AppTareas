@@ -8,6 +8,14 @@ body{
 header{
     padding-top: 33px;
 }
+#identificacion{
+    width: 10%;
+    display: flex;
+    justify-content: space-around;
+}
+#user{
+    margin: auto
+}
 #botonpeticion{
     position: absolute;
     top: 33px;
@@ -36,6 +44,10 @@ form{
 form label{
     padding-top: 10px;
 }
+form input{
+    width: 100%;
+    text-align: center
+}
 
 #cerrarsesion{
     float: right;
@@ -58,9 +70,12 @@ h1{
     background-color: bisque;
     font-weight:bold;
     font-size: 15px;
-    text-align: center
+    text-align: center;
 }
 
+#enviar, #botontarea, #botoncancelar{
+    margin-top: 10px;
+}
 
 .ocultar{
     display: none;

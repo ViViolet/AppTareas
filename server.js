@@ -104,12 +104,21 @@ app.get('/tareas', function (req, res) {
         fs.readFile("./www/tareas.html", "utf-8", function (err, texto) {
             texto = texto.replace("[usuario]", req.session.user);
             connection.query("SELECT * FROM usuario", function (err, result) {
+
                 let options = "";
                 if (err) {
                     throw err
                 } else {
                     for (const usuario of result) {
                         options += `<option value='${usuario.id}'>${usuario.nombre}</option>`;
+                        // Cargamos avatar de usuario logeado
+                        if(usuario.id==req.session.idUser){
+                            if(usuario.avatar!=""){
+                                let imgavatar= `<img src="${usuario.avatar}" style="height: 100px; width: 100px">`
+                                texto=texto.replace('<span class="fas fa-user"></span>', imgavatar);
+                            }
+                        }
+
                     }
                 }
                 texto = texto.split("[ejecutores]").join(options);
@@ -147,10 +156,24 @@ app.get('/datosuser', function (req, res) {
 
 
 app.post("/datosuser", function (req, res) {
+
+    let image=req.body.avatar;
+    console.log(image)
+    var base64data=image.replace(/^data:image\/png;base64,/,"");
+    var name="avatar"+req.body.usuario+".jpg";
+    fs.writeFile(name,base64data, 'base64', function(err){
+        console.log(err)
+    })
+
+    console.log (req.body);
     if (req.body.contraseña == "") {
         res.send("Nook");
     } else {
-        connection.query("UPDATE usuario SET nombre =?, email=?, contraseña=? WHERE id=?", [req.body.nombre, req.body.email, req.body.contraseña, req.session.idUser], function (err, result) {
+        connection.query("UPDATE usuario SET nombre =?, email=?, contraseña=?, avatar=? WHERE id=?", [req.body.nombre, req.body.email, req.body.contraseña, req.body.avatar, req.session.idUser], function (err, result) {
+            var datos={
+                respuesta: "",
+                avatar: ""
+            }
             if (result.affectedRows > 0) {
                 res.send("ok");
             } else {
@@ -398,6 +421,8 @@ app.get("/cambioestado/:id?",function(req,res){
         }
     });
 })
+
+
 
 app.use(express.static('www'));
 

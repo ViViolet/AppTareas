@@ -15,8 +15,15 @@
 
 <body>
     <header>
-        <span class="fas fa-user"></span>
-        <button id="user">[usuario]</button>
+        <div id="identificacion">
+            <div id="contenedoridentificacion">
+                <img src="" alt="" id="foto1" style="height: 100px; width: 100px">
+                <span class="fas fa-user"></span>
+            </div>
+
+            <button id="user">[usuario]</button>
+        </div>
+
         <!-- <a  id= "cerrarsesion">Cerrar Sesión</a> -->
         <ul id="useroptions" class="dropdown">
             <li>
@@ -69,8 +76,9 @@
                     <input type="password" required name="confirmacion contraseña" id="contraseña2" placeholder="Confirma tu nueva contraseña :)">
                     <label for="email">Tu correo electrónico:</label>
                     <input type="email" required name="email" id="email" placeholder="Email">
-                    <button type="submit" id="enviar"> Enviar </button>
+                    <label for="foto">Tu foto de perfil:</label>
                     <input type="file" name="foto" id="foto" accept="image/*">
+                    <button type="submit" id="enviar"> Enviar </button>
                 </form>
 
             </div>
@@ -90,7 +98,7 @@
                     <input type="date" required name="fecha" id="fecha" placeholder="...">
                     <div id="botones">
                         <button type="submit" id="botontarea" value="guardar">Guardar</button>
-                        <button type="reset" value="cancelar">Cancelar</button>
+                        <button type="reset" id="botoncancelar" value="cancelar">Cancelar</button>
                     </div>
                 </form>
             </div>
